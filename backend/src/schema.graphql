@@ -1,0 +1,37 @@
+# import * from './generated/prisma.graphql'
+
+type SuccessMessage {
+    message: String
+}
+
+type Mutation {
+    createVhook(part_no: String, wire_diam: Float, length: String, arch_diam: String, qty_bag: Int, price_bag:Int, price_bag_10bags:Int): Vhook!
+    updateVhook(id: ID!, part_no: String, wire_diam: Float, length: String, arch_diam: String, qty_bag: Int, price_bag: Int, price_bag_10bags:Int): Vhook!
+    deleteVhook(id: ID!): Vhook
+    signup(email: String!, password: String!, name: String!): User!
+    signin(email: String!, password: String!): User!
+    signout: SuccessMessage
+    requestReset(email: String!): SuccessMessage
+    resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
+    addToCart(id: ID!): CartItem
+    removeFromCart(id: ID!): CartItem
+    createOrder(token: String!): Order!
+    }
+
+type Query {
+    chooks: [Chook]!
+    vhooks: [Vhook]!
+    vhook(where: VhookWhereUniqueInput!): Vhook
+    me: User
+    order(id: ID!): Order
+    orders(orderBy: OrderOrderByInput): [Order]!
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    permissions: [Permission!]! 
+    cart: [CartItem!]!   
+}
+

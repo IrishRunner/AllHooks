@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Nav/> renders a minimal nav when signed out 1`] = `
+<ul
+  className="NavStyles-ag8pqq-0 dhNlTE"
+  data-test="nav"
+>
+  <Link
+    href="/"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Home
+    </a>
+  </Link>
+  <Link
+    href="/contact"
+  >
+    <a
+      href="/contact"
+      onClick={[Function]}
+    >
+      Contact
+    </a>
+  </Link>
+  <Link
+    href="/signup"
+  >
+    <a
+      href="/signup"
+      onClick={[Function]}
+    >
+      Log in
+    </a>
+  </Link>
+</ul>
+`;
+
+exports[`<Nav/> renders the amount of items in the cart 1`] = `
+<div
+  className="count CartCount__Dot-wy3rd5-1 cxKpFT"
+>
+  9
+</div>
+`;

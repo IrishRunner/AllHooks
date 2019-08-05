@@ -1,0 +1,77 @@
+enum Permission {
+  ADMIN
+  USER
+  PERMISSIONUPDATE
+}
+
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  password: String!
+  cart: [CartItem!]!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: [Permission] @scalarList(strategy: RELATION)
+  
+}
+
+type Item {
+  id: ID! @id
+  title: String!
+  description: String!
+}
+
+type Chook {
+  id: ID! @id
+  part_no: String!
+  wire_diam: Float!
+  length: String!
+  arch_diam: String!
+  qty_bag: Int!
+  price_bag: Int!
+  price_bag_10bags: Int!
+}
+
+type Vhook {
+  id: ID! @id
+  part_no: String!
+  wire_diam: Float!
+  length: String!
+  arch_diam: String!
+  qty_bag: Int!
+  price_bag: Int!
+  price_bag_10bags: Int!
+}
+
+type CartItem {
+  id: ID! @id
+  quantity: Int! @default(value: 1)
+  vhook: Vhook! #relationship to Item
+  user: User! #relationship to User
+}
+
+type OrderItem {
+  id: ID! @id
+  part_no: String!
+  wire_diam: Float!
+  length: String!
+  arch_diam: String!
+  qty_bag: Int!
+  price_bag: Int!
+  price_bag_10bags: Int!
+  quantity: String! @default(value: "1")
+  user: User
+}
+
+type Order {
+  id: ID! @id
+  vhooks: [OrderItem!]!
+  total: Int!
+  user: User!
+  charge: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+
